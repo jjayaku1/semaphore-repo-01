@@ -1,8 +1,10 @@
----
-- hosts: my_servers
-  become: true
+- name: Install Apache
+  hosts: my_servers
+  become: yes
+
   tasks:
     - name: Install Apache
-      ansible.builtin.package:
+      apt:
         name: apache2
         state: present
+        update_cache: yes
